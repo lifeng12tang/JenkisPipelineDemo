@@ -20,7 +20,7 @@ pipeline {
                     credentialsId: 'MyAWS',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
-                        sh(script: 'aws s3 cp C:\ProgramData\Jenkins\.jenkins\workspace\BuildJob/index.html S3://tang-jenkins-test')
+                        sh(script: 'aws s3 cp /ProgramData/Jenkins/.jenkins/workspace/BuildJob/index.html S3://tang-jenkins-test')
             }
         }
         stage('Test') {
