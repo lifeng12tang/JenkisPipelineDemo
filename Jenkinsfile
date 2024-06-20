@@ -15,6 +15,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying stage'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'MyAWS',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
+                        sh(script: 'aws s3 cp C:\ProgramData\Jenkins\.jenkins\workspace\BuildJob/index.html S3://tang-jenkins-test')
             }
         }
         stage('Test') {
